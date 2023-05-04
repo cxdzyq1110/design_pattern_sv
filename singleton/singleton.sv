@@ -14,7 +14,7 @@
 // protected means: external functions cannot access
 class fruit;
     static local fruit m_self = null; // this local member should be static
-    static local string m_name = "";
+    protected string m_name = "";
 
     // new function should be proteced
     protected function new();
