@@ -20,7 +20,7 @@ class fruit;
     protected function new();
     endfunction
 
-    virtual function string set_name(string name);
+    virtual function void set_name(string name);
         m_name = name;
     endfunction
 
