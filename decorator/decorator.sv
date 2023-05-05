@@ -35,26 +35,36 @@ class concrete_component extends abstract_component;
     endfunction
 endclass
 
-class decorator extends abstract_component;
+virtual class decorator extends abstract_component;
     protected abstract_component m_comp;
     virtual function void set_comp(abstract_component comp);
         m_comp = comp;
     endfunction
 
-    virtual function void decorate();
-        $display("decorate");
-    endfunction
-
     virtual function void operate();
-        decorate();
         m_comp.operate();
     endfunction
 endclass
 
 class border_decorator extends decorator;
-    virtual function void decorate();
-        $display("border_decorator");
-        super.decorate();
+    virtual function void added_behav();
+        $display("add border!");
+    endfunction
+
+    virtual function void operate();
+        added_behav();
+        super.operate();
+    endfunction
+endclass
+
+class scroller_decorator extends decorator;
+    virtual function void added_behav();
+        $display("add scroller!");
+    endfunction
+
+    virtual function void operate();
+        added_behav();
+        super.operate();
     endfunction
 endclass
 
@@ -63,10 +73,12 @@ module tb_top;
 
     initial begin
         concrete_component comp = new();
-        border_decorator dec = new();
+        border_decorator border = new();
+        scroller_decorator scroller = new();
         comp.set_name("hello");
-        dec.set_comp(comp);
-        dec.operate();
+        border.set_comp(comp);
+        scroller.set_comp(border);
+        scroller.operate();
     end
 
 endmodule
