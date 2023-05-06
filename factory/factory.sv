@@ -22,7 +22,7 @@ endclass
 
 // singleton for factory
 class factory;
-    static protected factory me = null; // this protected member should be static
+    static local factory me = null; // this protected member should be static
     protected object m_objects [string];
 
     // new function should be proteced
@@ -77,7 +77,7 @@ endclass
 class registry#(type T=object, string S="object");
     typedef registry#(T, S) this_type;
     //
-    static protected this_type me = null; // this protected member should be static
+    static local this_type me = null; // this protected member should be static
     // m_obj is protected, and prototype for T object, name is S
     static protected T m_obj = new();
     // new function should be proteced
