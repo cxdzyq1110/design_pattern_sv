@@ -9,7 +9,7 @@
     $Log$
 
 \*----------------------------------------------------------*/
-class abstract_item;
+class item;
     rand int x;
 endclass
 
@@ -27,23 +27,23 @@ endclass
         m_cons.push_back(cons); \
     endfunction
 
-class concrete_item extends abstract_item;
-    `constraint_utils(abstract_item)
+class concrete_item extends item;
+    `constraint_utils(item)
 endclass
 
-class concrete_cons_neq_10 extends abstract_constraint#(abstract_item);
+class concrete_cons_neq_10 extends abstract_constraint#(item);
     constraint cons {
         m_inst.x != 10;
     }
 endclass
 
-class concrete_cons_gte_10 extends abstract_constraint#(abstract_item);
+class concrete_cons_gte_10 extends abstract_constraint#(item);
     constraint cons {
         m_inst.x >= 10;
     }
 endclass
 
-class concrete_cons_lte_10 extends abstract_constraint#(abstract_item);
+class concrete_cons_lte_10 extends abstract_constraint#(item);
     constraint cons {
         m_inst.x <= 10;
     }
