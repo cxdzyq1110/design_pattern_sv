@@ -13,7 +13,7 @@
 // local means: sub-classes cannot access this variable
 // protected means: external functions cannot access
 class singleton;
-    static local singleton m_self = null; // this local member should be static
+    static local singleton me = null; // this local member should be static
     protected string m_name = "";
 
     // new function should be proteced
@@ -30,11 +30,11 @@ class singleton;
 
     // this function should be static
     static function singleton get();
-        if (m_self==null) begin
-            m_self = new();
+        if (me==null) begin
+            me = new();
             $display("%0t --> Create singleton instance", $time);
         end
-        return m_self;
+        return me;
     endfunction
 endclass
 
